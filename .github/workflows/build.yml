@@ -94,7 +94,7 @@ jobs:
         with:
           repository: joyrider3774/32blit-sdk
           path: 32blit-sdk
-          ref: funkey
+          ref: muos
                 
       - name: setup 32blit extras
         run: |
