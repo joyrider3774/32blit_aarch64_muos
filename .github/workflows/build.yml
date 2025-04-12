@@ -168,7 +168,7 @@ jobs:
           echo "SDL_GAMECONTROLLERCONFIG=\$(grep \"muOS-Keys\" \"/opt/muos/device/current/control/gamecontrollerdb_modern.txt\")" >> "./output/game.sh"
           echo "export SDL_GAMECONTROLLERCONFIG"
           
-          echo "GAMEFOLDER=\$(dirname \"$0\")/.${{matrix.output}}" >> "./output/game.sh"
+          echo "GAMEFOLDER=\$(dirname \"\$0\")/.${{matrix.output}}" >> "./output/game.sh"
           echo "cd \$GAMEFOLDER/bin" >> "./output/game.sh"
           echo "./${{matrix.output}} --fullscreen" >> "./output/game.sh"
           
