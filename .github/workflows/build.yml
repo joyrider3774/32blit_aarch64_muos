@@ -147,32 +147,32 @@ jobs:
                       
       - name: create ${{matrix.output}}.sh general stuff
         run: |
-          echo "#!/bin/sh" > "./output/game.sh"
-          echo ". /opt/muos/script/var/func.sh" >> "./output/game.sh"
-          echo "HOME=\"\$(GET_VAR \"device\" \"board/home\")" >> "./output/game.sh"
-          echo "export HOME"  >> "./output/game.sh"
+          echo "#!/bin/sh" > "./output/${{matrix.output}}.sh"
+          echo ". /opt/muos/script/var/func.sh" >> "./output/${{matrix.output}}.sh"
+          echo "HOME=\"\$(GET_VAR \"device\" \"board/home\")\"" >> "./output/${{matrix.output}}.sh"
+          echo "export HOME"  >> "./output/${{matrix.output}}.sh"
           
-          echo "if [ \"\$(GET_VAR \"global\" \"boot/device_mode\")\" -eq 1 ]; then"  >> "./output/game.sh"
-          echo "SDL_HQ_SCALER=2" >> "./output/game.sh"          
-          echo "SDL_ROTATION=0" >> "./output/game.sh"          
-          echo "SDL_BLITTER_DISABLED=1" >> "./output/game.sh" 
-          echo "else" >> "./output/game.sh"
-          echo "SDL_HQ_SCALER=\"\$(GET_VAR \"device\" \"sdl/scaler\")\"" >> "./output/game.sh"
-          echo "SDL_ROTATION=\"\$(GET_VAR \"device\" \"sdl/rotation\")\"" >> "./output/game.sh"
-          echo "SDL_BLITTER_DISABLED=\"\$(GET_VAR \"device\" \"sdl/blitter_disabled\")\"" >> "./output/game.sh"
-          echo "fi" >> "./output/game.sh"
-          echo "export SDL_HQ_SCALER SDL_ROTATION SDL_BLITTER_DISABLED" >> "./output/game.sh"
+          echo "if [ \"\$(GET_VAR \"global\" \"boot/device_mode\")\" -eq 1 ]; then"  >> "./output/${{matrix.output}}.sh"
+          echo "SDL_HQ_SCALER=2" >> "./output/${{matrix.output}}.sh"          
+          echo "SDL_ROTATION=0" >> "./output/${{matrix.output}}.sh"          
+          echo "SDL_BLITTER_DISABLED=1" >> "./output/${{matrix.output}}.sh" 
+          echo "else" >> "./output/${{matrix.output}}.sh"
+          echo "SDL_HQ_SCALER=\"\$(GET_VAR \"device\" \"sdl/scaler\")\"" >> "./output/${{matrix.output}}.sh"
+          echo "SDL_ROTATION=\"\$(GET_VAR \"device\" \"sdl/rotation\")\"" >> "./output/${{matrix.output}}.sh"
+          echo "SDL_BLITTER_DISABLED=\"\$(GET_VAR \"device\" \"sdl/blitter_disabled\")\"" >> "./output/${{matrix.output}}.sh"
+          echo "fi" >> "./output/${{matrix.output}}.sh"
+          echo "export SDL_HQ_SCALER SDL_ROTATION SDL_BLITTER_DISABLED" >> "./output/${{matrix.output}}.sh"
 
-          echo "SET_VAR \"system\" \"foreground_process\" \"${{ matrix.output }}\"" >> "./output/game.sh"
+          echo "SET_VAR \"system\" \"foreground_process\" \"${{ matrix.output }}\"" >> "./output/${{matrix.output}}.sh"
          
-          echo "SDL_GAMECONTROLLERCONFIG=\$(grep \"muOS-Keys\" \"/opt/muos/device/current/control/gamecontrollerdb_modern.txt\")" >> "./output/game.sh"
-          echo "export SDL_GAMECONTROLLERCONFIG"
+          echo "SDL_GAMECONTROLLERCONFIG=\$(grep \"muOS-Keys\" \"/opt/muos/device/current/control/gamecontrollerdb_modern.txt\")" >> "./output/${{matrix.output}}.sh"
+          echo "export SDL_GAMECONTROLLERCONFIG" >> "./output/${{matrix.output}}.sh"
           
-          echo "GAMEFOLDER=\$(dirname \"\$0\")/.${{matrix.output}}" >> "./output/game.sh"
-          echo "cd \$GAMEFOLDER/bin" >> "./output/game.sh"
-          echo "./${{matrix.output}} --fullscreen" >> "./output/game.sh"
+          echo "GAMEFOLDER=\$(dirname \"\$0\")/.${{matrix.output}}" >> "./output/${{matrix.output}}.sh"
+          echo "cd \"\$GAMEFOLDER/bin\"" >> "./output/${{matrix.output}}.sh"
+          echo "./${{matrix.output}} --fullscreen" >> "./output/${{matrix.output}}.sh"
           
-          chmod +x "./output/game.sh"
+          chmod +x "./output/${{matrix.output}}.sh"
             
       - name: Store build
         uses: actions/upload-artifact@v4
