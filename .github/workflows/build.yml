@@ -165,7 +165,7 @@ jobs:
 
           echo "SET_VAR \"system\" \"foreground_process\" \"${{ matrix.output }}\"" >> "./output/${{matrix.output}}.sh"
          
-          echo "SDL_GAMECONTROLLERCONFIG=\$(grep \"muOS-Keys\" \"/opt/muos/device/current/control/gamecontrollerdb_modern.txt\")" >> "./output/${{matrix.output}}.sh"
+          echo "SDL_GAMECONTROLLERCONFIG=\$(grep \"muOS-Keys\" \"/opt/muos/device/current/control/gamecontrollerdb_retro.txt\")" >> "./output/${{matrix.output}}.sh"
           echo "export SDL_GAMECONTROLLERCONFIG" >> "./output/${{matrix.output}}.sh"
           
           echo "GAMEFOLDER=\$(dirname \"\$0\")/.${{matrix.output}}" >> "./output/${{matrix.output}}.sh"
