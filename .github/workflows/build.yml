@@ -179,3 +179,4 @@ jobs:
         with:
           name: ${{ matrix.output }} - 32blit - AARCH64 - Muos 
           path: output
+          include-hidden-files: true
