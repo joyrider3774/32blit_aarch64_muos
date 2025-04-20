@@ -57,6 +57,9 @@ jobs:
           
           - { repo: 'felipemanga/Armadillo32Blit',                    output: 'armadillo',          dir: ''}
           
+          - { repo: 'joyrider3774/formula1_32blit',                   output: 'Formula1',          dir: ''}
+          - { repo: 'joyrider3774/waternet_32blit',                   output: 'Waternet',          dir: ''}
+          
 
         # these will contain bins for all the games in the repo as subdir building did not work so be it  
           - { repo: 'mikerr/32blit-games',                            output: 'carsprint',          dir: ''}
